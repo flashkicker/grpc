@@ -1,6 +1,6 @@
-﻿using App2.Services;
+﻿
 using COS.SDK;
-using GRPC2;
+using COSSDKProto;
 using GrpcDotNetNamedPipes;
 using Microsoft.UI.Xaml;
 
@@ -29,16 +29,9 @@ namespace App2
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            StartGrpcServer();
+            COSSDK.InitService("App2");
             m_window = new MainWindow();
             m_window.Activate();
-        }
-
-        private void StartGrpcServer()
-        {
-            var server = new NamedPipeServer(ServiceHelper.GetServiceName(typeof(App2Service)));
-            GRPC2Service.BindService(server.ServiceBinder, new App2Service());
-            server.Start();
         }
 
         private Window m_window;
