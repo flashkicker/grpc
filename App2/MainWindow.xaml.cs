@@ -1,4 +1,3 @@
-using App2.Services;
 using COS.SDK;
 using Google.Protobuf;
 using Grpc.Net.Client;
@@ -40,18 +39,24 @@ namespace App2
 
         private async void myButton_Click(object sender, RoutedEventArgs e)
         {
+            var messageRequest = new MessageRequest { Message = "HelloWorld.SayHello" };
+
+            var res1 = await COSSDK.CallAsync<string>("App1", "GRPCExecute", new object[]{ "str1", "str2" });
+
+            //Debug.WriteLine(res1.Message);
+
             //var result = (MessageReply)await COSSDK.CallAsync("GRPC1.GRPC1Service.SendMessage", new object[] { new MessageRequest { Message = "Hello App1, this is a message from App2" }, typeof(MessageReply) });
 
             //var localResult = (MessageReply)await COSSDK.CallAsync("App2Service.SendMessage", new object[] { new MessageRequest { Message = "Hello App1, this is a message from App2" }, null } );
 
-            var messageRequest = new MessageRequest { Message = "Hello App1, this is a remote message from App2" };
+            //var messageRequest = new MessageRequest { Message = "Hello App1, this is a remote message from App2" };
 
-            var res1 = await COSSDK.CallAsync<MessageRequest, MessageReply>("GRPC1.GRPC1Service", "SendMessage", messageRequest);
+            //var res1 = await COSSDK.CallAsync<MessageRequest, MessageReply>("GRPC1.GRPC1Service", "SendMessage", messageRequest);
 
 
-            var localMessageReq = new MessageRequest { Message = "Hello App1, this is an internal message from App2" } ;
+            //var localMessageReq = new MessageRequest { Message = "Hello App1, this is an internal message from App2" } ;
 
-            var localRes = await COSSDK.CallAsync<MessageRequest, MessageReply>(ServiceHelper.GetServiceName(typeof(App2Service)), "SendMessage", localMessageReq);
+            //var localRes = await COSSDK.CallAsync<MessageRequest, MessageReply>(ServiceHelper.GetServiceName(typeof(App2Service)), "SendMessage", localMessageReq);
         }
     }
 }

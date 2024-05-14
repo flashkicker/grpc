@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "COSSDKProto";
+
+package COSSDKProto;
+
+service COSSDKService {
+  rpc GRPCExecute (COSSDKGRPCRequest) returns (COSSDKGRPCResult);
+}
+
+
+message COSSDKGRPCRequest {
+  string className = 1;
+  string methodName = 2;
+  string jsonArgs=3;
+}
+
+message COSSDKGRPCResult {
+  string jsonResult = 1;
+}

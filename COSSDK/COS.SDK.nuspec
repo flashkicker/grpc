@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>COSSDK</id>
+    <version>1.0.2</version>
+    <title>COSSDK</title>
+    <authors>COSSDK</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <description>COSSDK</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Tag1 Tag2</tags>
+  </metadata>
+  <files>
+    <file src="proto/**/*.proto" />
+  </files>
+</package>
+<!--https://sanket-naik.medium.com/sharing-grpc-proto-files-with-nuget-packages-made-easy-dd366a094b25-->

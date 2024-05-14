@@ -1,10 +1,10 @@
-﻿using App1.Services;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using GRPC1;
 using GrpcDotNetNamedPipes;
 using System;
 using System.Reflection;
 using COS.SDK;
+using COSSDKProto;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -31,16 +31,12 @@ namespace App1
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            StartGrpcServer();
+            COSSDK.InitService("App1");
+            //var server = new NamedPipeServer("App1.COSSDKProto");
+            //COSSDKService.BindService(server.ServiceBinder, new COSSDKgRPCService());
+            //server.Start();
             m_window = new MainWindow();
             m_window.Activate();
-        }
-
-        private void StartGrpcServer()
-        {
-            var server = new NamedPipeServer(ServiceHelper.GetServiceName(typeof(App1Service)));
-            GRPC1Service.BindService(server.ServiceBinder, new App1Service());
-            server.Start();
         }
 
         private Window m_window;
